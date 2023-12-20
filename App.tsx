@@ -16,103 +16,116 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {PaperProvider} from 'react-native-paper';
+// import { createMaterialBottomTabNavigator } from 'react-native-paper/lib/typescript/react-navigation';
 
 import {
   Colors,
   DebugInstructions,
-  Header,
+  // Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import Home from './src/screens/Home';
+import Categories from './src/screens/Categories';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
+import Cart from './src/screens/Cart';
+import Profile from './src/screens/Profile';
+import Header from './src/componets/Header';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Details from './src/screens/Details';
+import DetailsCategory from './src/screens/DetailsCategory';
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import SignUp from './src/screens/auth/SignUp';
+import Login from './src/screens/auth/Login';
+import { Provider } from 'react-redux';
+import { Store } from './src/Store';
 
+const Tab = createMaterialBottomTabNavigator();
+const Stack = createNativeStackNavigator()
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
-
+  // const user = useSelector((state : any) => state.auth.user);
+  // console.log('====================================');
+  // console.log('user '  , user);
+  // console.log('====================================');
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const HomeScreen = ( ) => {
+    return(
+      <>
+      <Tab.Navigator>
+            <Tab.Screen name="Home" component={Home} 
+            
+            options={{
+              tabBarLabel: 'Home',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="home" color={color} size={26} />
+              ),
+            }}/>
+            <Tab.Screen name="Categories" component={Categories} 
+             options={{
+              tabBarLabel: 'Categories',
+              tabBarIcon: ({ color }) => (
+                <MaterialIcons name="category" color={color} size={26} />
+              ),
+            }}
+            />
+            <Tab.Screen name="Cart" component={Cart} 
+            options={{
+              tabBarLabel: 'Cart',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="cart" color={color} size={26} />
+              ),
+            }}
+            />
+            <Tab.Screen name="Profile" component={Profile}
+            
+            options={{
+              tabBarLabel: 'Profile',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="account" color={color} size={26} />
+              ),
+            }}/>
+          </Tab.Navigator>
+      </>
+    )
+  }
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+    <>
+      {/* <StoreProvider store={store}> */}
+      {/* <ScrollView> */}
+      <Provider store={Store}>
+      <PaperProvider>
         <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        <NavigationContainer>
+          <Stack.Navigator
+          screenOptions={{headerShown:false}}
+          initialRouteName='Login'
+          >
+
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="Details" component={Details} />
+            <Stack.Screen name="DetailsCategory" component={DetailsCategory} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+          </Provider>
+            {/* </ScrollView> */}
+      {/* </StoreProvider> */}
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const styles = StyleSheet.create({});
 
 export default App;
