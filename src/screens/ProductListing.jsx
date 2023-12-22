@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ProductListing = ({route, navigation}) => {
-    const{ id , item }=  route.params
+const ProductListing = ({ route, navigation }) => {
+  const { id, item } = route.params
   return (
     <View>
       <Text>ProductListing</Text>
