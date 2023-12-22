@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
 import {COLORS, FONTS, SIZES} from '../assets/Theme';
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -7,12 +7,12 @@ const Header = () => {
   const [text, onChangeText] = React.useState('');
   return (
     <>
-    
+    {/* <SafeAreaView> */}
     <View style={{
-      paddingVertical:0,
+      paddingVertical:12,
       paddingHorizontal:15,
       display:'flex',
-      flexDirection:'column'
+      flexDirection:'column',
     }}>
       <View
         style={{
@@ -79,7 +79,7 @@ const Header = () => {
        </View>
       </View>
     </View>
-    
+    {/* </SafeAreaView> */}
     </>
   );
 };
