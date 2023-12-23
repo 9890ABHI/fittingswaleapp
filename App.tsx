@@ -31,7 +31,7 @@ import Categories from './src/screens/Categories';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Cart from './src/screens/Cart';
-import Profile from './src/screens/Profile';
+import Profile, { ProfileStackScreen } from './src/screens/Profile';
 import {Header} from './src/componets/Header';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -48,33 +48,39 @@ import Login from './src/screens/auth/Login';
 import { Provider } from 'react-redux';
 import { Store } from './src/Store';
 import { COLORS,FONTS } from './src/assets/Theme';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
 
 function App() {
 
+  
 
   const HomeScreen = () => {
     return (
       <>
-
       <Header />
-      <Tab.Navigator>
+      <Tab.Navigator 
+      screenOptions={{
+        tabBarLabel:'null'
+      }}>
             <Tab.Screen name="Home" component={Home} 
             
             options={{
               tabBarLabel: 'Home',
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons name="home" color={color} size={26} />
-              ),
+              ),tabBarActiveTintColor:COLORS.Primary,
+              headerShown:false
             }}/>
             <Tab.Screen name="Categories" component={Categories} 
              options={{
               tabBarLabel: 'Categories',
               tabBarIcon: ({ color }) => (
                 <MaterialIcons name="category" color={color} size={26} />
-              ),
+              ),tabBarActiveTintColor:COLORS.Primary,
+              headerShown:false
             }}
             />
             <Tab.Screen name="Cart" component={Cart} 
@@ -82,18 +88,25 @@ function App() {
               tabBarLabel: 'Cart',
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons name="cart" color={color} size={26} />
-              ),
+              ),tabBarActiveTintColor:COLORS.Primary,
+              headerShown:false
             }}
             />
-            <Tab.Screen name="Profile" component={Profile}
+            <Tab.Screen name="Profile" component={ProfileStackScreen}
             
             options={{
               tabBarLabel: 'Profile',
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons name="account" color={color} size={26} />
               ),
+              tabBarActiveTintColor:COLORS.Primary,
+              headerShown:false,
+              
+              
             }}/>
+
           </Tab.Navigator>
+          
 
         
 
@@ -101,6 +114,7 @@ function App() {
     )
   }
 
+  
   return (
     <>
       {/* <StoreProvider store={store}> */}
@@ -114,14 +128,16 @@ function App() {
           screenOptions={{headerShown:false}}
           initialRouteName='HomeScreen'
           >
-
-
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="SignUp" component={SignUp} />
               <Stack.Screen name="HomeScreen" component={HomeScreen} />
               <Stack.Screen name="Details" component={Details} />
               <Stack.Screen name="DetailsCategory" component={DetailsCategory} />
+              {/* <Stack.Screen  name="ProfileInfo" component={ProfileInfo}/> */}
+            {/* <Stack.Screen  name='Setting' component={Setting}/> */}
             </Stack.Navigator>
+            {/* <Stack.Navigator> */}
+          {/* </Stack.Navigator> */}
           </NavigationContainer>
         </PaperProvider>
       </Provider>

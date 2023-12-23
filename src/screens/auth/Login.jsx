@@ -186,6 +186,7 @@ const Login = ({ navigation }) => {
           </View>
         </View>
       </View>
+      </View>
     </>
   )
 }
