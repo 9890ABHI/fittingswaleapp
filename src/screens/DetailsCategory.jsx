@@ -1,18 +1,16 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-<<<<<<< HEAD
+
 import {FONTS} from '../assets/Theme';
 import { AuthHeader } from '../componets/Header';
-=======
-import { FONTS } from '../assets/Theme';
->>>>>>> e7d1c4e73c69138446ad3168ac825728bce79384
+
 
 const DetailsCategory = ({ route, navigation }) => {
   const { id, item } = route.params;
   const data = item
   return (
     <>
-<<<<<<< HEAD
+
     <AuthHeader />
     <ScrollView>
       <View>
@@ -23,17 +21,7 @@ const DetailsCategory = ({ route, navigation }) => {
           <Text>Home \ Category \ {item.name}</Text>
           <Text>
             {/* {id}
-=======
-      <ScrollView>
-        <View>
-          <View
-            style={{
-              padding: 10,
-            }}>
-            <Text>Home \ Category \ {item.name}</Text>
-            <Text>
-              {/* {id}
->>>>>>> e7d1c4e73c69138446ad3168ac825728bce79384
+
         {item.name} */}
             </Text>
           </View>
