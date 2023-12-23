@@ -1,10 +1,16 @@
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+<<<<<<< HEAD
 import {COLORS, FONTS} from '../assets/Theme';
 import {HomeData} from '../assets/Constants/data';
 import {Card} from '../componets/Card';
+=======
+import { COLORS, FONTS } from '../assets/Theme';
+import { HomeData } from '../assets/Constants/data';
+import Card from '../componets/Card';
+>>>>>>> e7d1c4e73c69138446ad3168ac825728bce79384
 
-const Home = ({navigation}) => {
+const Home = ({ navigation }) => {
   return (
     <>
       <ScrollView>
