@@ -45,17 +45,15 @@ const SignUp = ({ navigation }) => {
 
   return (
     <>
-<<<<<<< HEAD
+
     <AuthHeader />
-    <View style={{
+    {/* <View style={{
       display:'flex',
       justifyContent:'center',
       alignItems:"center",
       backgroundColor:"#fff",
       height:"100%"
-    }}>
-=======
->>>>>>> e7d1c4e73c69138446ad3168ac825728bce79384
+    }}> */}
       <View style={{
         display: 'flex',
         justifyContent: 'center',

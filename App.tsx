@@ -58,7 +58,7 @@ function App() {
   const HomeScreen = () => {
     return (
       <>
-<<<<<<< HEAD
+
       <Header />
       <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} 
@@ -94,67 +94,9 @@ function App() {
               ),
             }}/>
           </Tab.Navigator>
-=======
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarHideOnKeyboard: true,
-            headerShown: false,
-            tabBarIcon: ({ focused }) => {
-              let Icon;
-              let iconColor;
-              let icontype;
-              if (route.name === 'Home') {
-                Icon = focused ? MaterialCommunityIcons : MaterialCommunityIcons
-                iconColor = focused ? COLORS.black : COLORS.darkGray
-                icontype = focused ? 'home' : 'home-outline'
-              } else if (route.name === 'Categories') {
-                Icon = focused ? MaterialIcons : MaterialIcons;
-                iconColor = focused ? COLORS.black : COLORS.darkGray
-                icontype = focused ? 'category' : 'category'
-              }
-              else if (route.name === 'Cart') {
-                Icon = focused ? MaterialCommunityIcons : MaterialCommunityIcons;
-                iconColor = focused ? COLORS.black : COLORS.darkGray
-                icontype = focused ? 'cart' : 'cart-outline'
-              }
-              else if (route.name === 'Profile') {
-                Icon = focused ? MaterialCommunityIcons : MaterialCommunityIcons
-                iconColor = focused ? COLORS.black : COLORS.darkGray
-                icontype = focused ? 'account' : 'account-outline'
-              }
-              return (
-                <View
-                  style={{
-                    height: 45,
-                    width: 45,
-                    backgroundColor: focused ? COLORS.white : "transparent",
-                    justifyContent: "space-evenly",
-                    alignSelf: 'center',
-                    borderRadius: 12,
-                  }}>
-                  <Icon style={{
-                    alignSelf: 'center',
-                  }} name={icontype} color={focused ? COLORS.Primary : COLORS.white} size={focused ? 30 : 28} />
-                </View>
-              );
-            },
-            tabBarLabelStyle: {
-              ...FONTS.h4,
-              fontWeight:"bold"
-            },
-            tabBarStyle: {
-              height:hp('10%'),
-              backgroundColor: COLORS.Primary,
-            },
-            tabBarActiveTintColor: COLORS.white,
-            tabBarInactiveTintColor: COLORS.black,
-          })}>
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Categories" component={Categories} />
-          <Tab.Screen name="Cart" component={Cart} />
-          <Tab.Screen name="Profile" component={Profile} />
-        </Tab.Navigator>
->>>>>>> e7d1c4e73c69138446ad3168ac825728bce79384
+
+        
+
       </>
     )
   }
@@ -164,7 +106,7 @@ function App() {
       {/* <StoreProvider store={store}> */}
       {/* <ScrollView> */}
       <Provider store={Store}>
-<<<<<<< HEAD
+
       <PaperProvider>
         
         <NavigationContainer>
@@ -172,15 +114,7 @@ function App() {
           screenOptions={{headerShown:false}}
           initialRouteName='HomeScreen'
           >
-=======
-        <PaperProvider>
-          <Header />
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{ headerShown: false }}
-              initialRouteName='HomeScreen'
-            >
->>>>>>> e7d1c4e73c69138446ad3168ac825728bce79384
+
 
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="SignUp" component={SignUp} />
