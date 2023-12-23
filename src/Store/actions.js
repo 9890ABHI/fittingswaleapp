@@ -1,16 +1,23 @@
-// import axios from 'axios';
+import axios from "axios";
+import { testURL } from "../assets/Constants/helper";
+
+// actions 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
-// export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
-// export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+
 export const LOGOUT = "LOGOUT";
 
 export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
 
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const Empty_CART = 'Empty_CART';
+export const INCREASE_CART_ITEM_VALUE = 'INCREASE_CART_ITEM_VALUE'
+export const DECREASE_CART_ITEM_VALUE = 'DECREASE_CART_ITEM_VALUE'
 
-import axios from "axios";
-import { testURL } from "../assets/Constants/helper";
+
+
 export const Init = () => {
   return async dispatch => {
     try {
@@ -36,12 +43,12 @@ export const Init = () => {
   }
 }
 export const loginAction = (credentials) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
-      const res = await axios.post(testURL + 'login/', {
-        username :"abhiasd",
-        password:'12341234'
-      });
+      const res = await axios.post(testURL + 'login/', credentials);
+      console.log('====================================');
+      console.log('sucessfull' , res.data);
+      console.log('====================================');
 
       dispatch({
         type: LOGIN_SUCCESS,
@@ -76,7 +83,7 @@ export const RegisterAction = (setLoading, data) => {
     try {
       setLoading(true);
       console.log('====================================');
-      console.log(data);
+      console.log(data );
       console.log('====================================');
       const res = await axios.post(testURL + 'register/', data);
       console.log('====================================');
@@ -131,16 +138,20 @@ export const LogoutAction = () => {
 }
 
 
-export const addToCart = (item) => {
-  return {
-    type: 'ADD_TO_CART',
-    payload: item,
-  };
-};
+export const addToCart = (product) => ({ type: 'ADD_TO_CART', payload: product });
+export const removeFromCart = (productId) => ({
+  type: REMOVE_FROM_CART,
+  payload: productId,
+});
+export const emptyCart = () => ({
+  type: Empty_CART,
+});
 
-export const removeFromCart = (item) => {
-  return {
-    type: 'REMOVE_FROM_CART',
-    payload: item,
-  };
-};
+export const increaseCartItemValue = (productId) => ({
+  type: INCREASE_CART_ITEM_VALUE,
+  payload: productId,
+});
+export const decreaseCartItemValue = (productId) => ({
+  type: DECREASE_CART_ITEM_VALUE,
+  payload: productId,
+});

@@ -32,7 +32,7 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import {NavigationContainer} from '@react-navigation/native';
 import Cart from './src/screens/Cart';
 import Profile from './src/screens/Profile';
-import Header from './src/componets/Header';
+import {Header} from './src/componets/Header';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -60,6 +60,7 @@ function App(): React.JSX.Element {
   const HomeScreen = ( ) => {
     return(
       <>
+      <Header />
       <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} 
             
@@ -104,11 +105,11 @@ function App(): React.JSX.Element {
       {/* <ScrollView> */}
       <Provider store={Store}>
       <PaperProvider>
-        <Header />
+        
         <NavigationContainer>
           <Stack.Navigator
           screenOptions={{headerShown:false}}
-          initialRouteName='Login'
+          initialRouteName='HomeScreen'
           >
 
             <Stack.Screen name="Login" component={Login} />

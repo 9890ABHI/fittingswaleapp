@@ -1,6 +1,17 @@
 // import { LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT, SIGNUP_FAILURE, SIGNUP_SUCCESS } from "./actions";
 
-import { LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT, REGISTER } from "./actions";
+import {
+  LOGIN,
+  LOGIN_FAILURE,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  REGISTER,
+  ADD_TO_CART,
+  DECREASE_CART_ITEM_VALUE,
+  INCREASE_CART_ITEM_VALUE,
+  REMOVE_FROM_CART,
+  Empty_CART,
+} from './actions';
 
 // const initialState = {
 //   access: null,
@@ -44,7 +55,7 @@ import { LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT, REGISTER } from "./actions
 const initialState = {
   access: null,
   user: null,
-  error:null,
+  error: null,
   cart: [],
 };
 
@@ -82,16 +93,58 @@ export default (state = initialState, action) => {
         access: action.payload,
       };
 
-    case "ADD_TO_CART":
+    case ADD_TO_CART:
+      const existingProduct = state.cart.find(
+        item => item.id === action.payload.id,
+      );
+      if (existingProduct) {
+        return {
+          ...state,
+          cart: state.cart.map(item =>
+            item.id === existingProduct.id
+              ? {...item, quantity: item.quantity + 1}
+              : item,
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          cart: [...state.cart, {...action.payload, quantity: 1}],
+        };
+      }
+
+    case REMOVE_FROM_CART:
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart: state.cart.filter(item => item.id !== action.payload),
       };
-    case "REMOVE_FROM_CART":
+
+    case Empty_CART:
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload.id),
+        cart: [],
       };
+
+    case INCREASE_CART_ITEM_VALUE:
+      return {
+        ...state,
+        cart: state.cart.map(item =>
+          item.id === action.payload
+            ? {...item, quantity: item.quantity + 1}
+            : item,
+        ),
+      };
+
+    case DECREASE_CART_ITEM_VALUE:
+      return {
+        ...state,
+        cart: state.cart.map(item =>
+          item.id === action.payload
+            ? {...item, quantity: item.quantity - 1}
+            : item,
+        ),
+      };
+
     default:
       return state;
   }

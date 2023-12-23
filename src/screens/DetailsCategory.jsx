@@ -1,12 +1,14 @@
 import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {FONTS} from '../assets/Theme';
+import { AuthHeader } from '../componets/Header';
 
 const DetailsCategory = ({route, navigation}) => {
   const {id, item} = route.params;
   const data = item
   return (
     <>
+    <AuthHeader />
     <ScrollView>
       <View>
         <View

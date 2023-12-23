@@ -2,7 +2,7 @@ import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {COLORS, FONTS} from '../assets/Theme';
 import {HomeData} from '../assets/Constants/data';
-import Card from '../componets/Card';
+import {Card} from '../componets/Card';
 
 const Home = ({navigation}) => {
   return (

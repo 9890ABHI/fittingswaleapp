@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Entypo';
 import Email from 'react-native-vector-icons/Fontisto';
 import Phone from 'react-native-vector-icons/Feather';
+import { AuthHeader } from '../../componets/Header';
 
 
 const SignUp = ({navigation}) => {
@@ -31,7 +32,7 @@ const SignUp = ({navigation}) => {
     }
 
     const userData = {
-      username,
+      Username: username,
       email,
       phone,
       password,
@@ -44,6 +45,7 @@ console.log(loading);
 
   return (
     <>
+    <AuthHeader />
     <View style={{
       display:'flex',
       justifyContent:'center',

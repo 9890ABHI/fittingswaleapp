@@ -5,6 +5,7 @@ import { COLORS, FONTS } from '../../assets/Theme'
 import { LoginAction, login, loginAction } from '../../Store/actions'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Entypo';
+import { AuthHeader } from '../../componets/Header'
 
 const Login = ({navigation}) => {
   const auth = useSelector(state => state)
@@ -31,12 +32,13 @@ const Login = ({navigation}) => {
     
 
   const handleLogin = () => {
-    const credentials = { username : username, password : password };
+    const credentials = {  username: 'admin',
+    password: 'admin', };
     console.log('====================================');
     console.log(credentials);
     console.log('====================================');
     dispatch(loginAction(credentials));
-    navigation.navigate('HomeScreen')
+    // navigation.navigate('HomeScreen')
   };
 console.log('====================================');
 console.log(loading);
@@ -49,6 +51,7 @@ console.log(auth.error);
   return (
     <>
     {/* {auth.error && <Text>{auth.error}</Text>} */}
+    <AuthHeader />
     <View style={{
       display:'flex',
       justifyContent:'center',
