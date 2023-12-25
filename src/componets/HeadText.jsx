@@ -24,6 +24,26 @@ export const HeadText = ({title}) => {
   )
 }
 
-
+export const SettingHeadText = ({title})=> {
+  return(
+    <>
+    <View style={{
+        display:'flex',
+    }}>
+      <Text
+      style={{
+        ...FONTS.h2,
+        color:COLORS.gray
+      }}
+      >{title}<Text 
+      style={{
+        ...FONTS.h1,
+        color:COLORS.red
+      }}>
+        .</Text> </Text>
+    </View>
+    </>
+  )
+}
 
 const styles = StyleSheet.create({})

@@ -37,9 +37,9 @@ const Home = ({ navigation }) => {
                   gap: 20,
                   justifyContent: 'center',
                 }}>
-                {HomeData.map(item => (
+                {HomeData.map((item) => (
                   <>
-                    <Card navigation={navigation} item={item} key={item.id} />
+                    <Card navigation={navigation} item={item}  />
                   </>
                 ))}
               </View>

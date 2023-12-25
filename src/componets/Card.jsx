@@ -1,5 +1,5 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 import { COLORS , FONTS } from '../assets/Theme'
 
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -98,7 +98,7 @@ export const Card = ({item , navigation}) => {
 }
 
 
-export const CartCard =({item})=> {
+export const CartCard =({item , OrderHistory})=> {
   const dispatch = useDispatch()
   const handleDelete =() => {
     dispatch(removeFromCart(item.id))
@@ -115,8 +115,7 @@ export const CartCard =({item})=> {
     //  paddingVertical:10,
      alignItems:"center",
     //  borderTopLeftRadius:10,
-     overflow:'hidden'
-
+     overflow:'hidden',
     }}>
       <Image
       source={{uri: item.img}}
@@ -172,7 +171,9 @@ export const CartCard =({item})=> {
         }}>incl.GST</Text>
       </Text>
         </View>
-        <View>
+        <View style={{
+          display:OrderHistory?'none' :'flex'
+        }}>
          <TouchableOpacity 
          onPress={handleDelete}
          >
@@ -185,6 +186,17 @@ export const CartCard =({item})=> {
          </TouchableOpacity>
         </View>
         </View>
+        {
+          OrderHistory && <>
+          <View>
+            <Text style={{
+              ...FONTS.body3
+            }}>
+              Deliver date : 12/21/2023
+            </Text>
+          </View>
+          </>
+        }
       </View>
 
 
@@ -194,4 +206,94 @@ export const CartCard =({item})=> {
   )
 }
 
-const styles = StyleSheet.create({})
+export const AddressCard =({item })=> {
+  
+return(
+  <>
+  <ScrollView>
+
+  
+  <View>
+  <View style={{
+      display:'flex',
+      flexDirection:'row',
+      gap:5,
+     backgroundColor:'#fff',
+     borderRadius:10,
+    //  paddingHorizontal:10,
+    //  paddingVertical:10,
+     alignItems:"center",
+    //  borderTopLeftRadius:10,
+     overflow:'hidden',
+    }}>
+      <View style={{width:'10%'}}>
+        <View style={{
+width:'100%',
+height:'100%',
+backgroundColor:COLORS.Primary,
+display:'flex',
+// justifyContent:'center',
+alignItems:'center',
+// paddingTop:10
+        }}>
+
+        <Text style={{
+          transform:[{rotate: '90deg'}],
+          ...FONTS.h3,
+          color:COLORS.white,
+          // display:'flex',
+          letterSpacing:2,
+          paddingLeft:5
+        }}>•••</Text>
+        </View>
+      </View>
+      <View style={{
+        display:'flex',
+        paddingLeft:20
+      }}>
+
+      <Text style={{
+        ...FONTS.h2,
+        color:COLORS.black,
+        textTransform:"capitalize"
+      }}>
+      {item.name}
+      </Text>
+      <Text style={{
+        ...FONTS.h2,
+        color:COLORS.black
+      }}>
+      {item.phone}
+      </Text>
+      <View style={{
+        display:'flex',
+        flexDirection:"row",
+        justifyContent:'space-between',
+        alignItems:'center',
+        // width:"80%"
+      }}>
+<View style={{width:'100%'}}>
+
+      <Text style={{
+        ...FONTS.body3,
+        color:COLORS.black,
+        textAlign:'auto'
+      }}>
+        {item.address.title}
+      </Text>
+        </View>
+        
+        </View>
+        
+      </View>
+
+
+
+    </View>
+
+  </View>
+  </ScrollView>
+  
+  </>
+)
+}
