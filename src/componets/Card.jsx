@@ -22,7 +22,7 @@ export const Card = ({item , navigation}) => {
         paddingHorizontal: 10,
         display: 'flex',
         justifyContent: 'space-between',
-        borderColor: COLORS.gray2,
+        borderColor: COLORS.gray3,
         borderWidth: 3,
       }} onPress={() => navigation.navigate("Details", {id:item.id , item:item})}>
     <View
