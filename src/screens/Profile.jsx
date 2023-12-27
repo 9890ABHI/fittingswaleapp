@@ -60,10 +60,10 @@ console.log('====================================');
         gap:10
       }}>
         {
-          data.map((item) => (
+          data.map((item , i) => (
             <>
             <TouchableOpacity 
-            key={item.id}
+             key={i}
         onPress={() => navigation.navigate(item.link)}
         >
 

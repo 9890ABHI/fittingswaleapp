@@ -12,7 +12,7 @@ const Details = ({route , navigation}) => {
     const{ id , item , category}=  route.params
     const data = HomeData.filter(item => item.id === id)[0]
     const discount = Math.round(
-        ((data.ogPrice - data.price) / data.ogPrice) * 100
+        ((data?.ogPrice - data?.price) / data?.ogPrice) * 100
       );
   return (
     <>
@@ -29,16 +29,37 @@ const Details = ({route , navigation}) => {
         {/* <TouchableOpacity>
             <Icon name='left' size={30} color={COLORS.gray2} />
         </TouchableOpacity> */}
-        <Text style={{
+        <View style={{
+            ...FONTS.h4,
+            color:COLORS.gray, textTransform:'capitalize'
+            ,display:'flex',
+            // alignItems:"center"
+            // justifyContent:'center',
+            flexDirection:'row'
+
+        }}>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+<Text style={{
             ...FONTS.h4,
             color:COLORS.gray, textTransform:'capitalize'
         }}>
-            Home / {data.category} / {data.name} / {category}
+
+            Home / 
+</Text>
+            </TouchableOpacity>
+            <Text style={{
+            ...FONTS.h4,
+            color:COLORS.gray, textTransform:'capitalize'
+        }}>
+
+            {data?.category} / {data?.name } /
+             {category}
         </Text>
+        </View>
       </View>
       <View>
         <Image 
-        source={{uri: data.img}}
+        source={{uri: data?.img}}
         // width={}
         height={200}
         style={{
@@ -67,14 +88,14 @@ const Details = ({route , navigation}) => {
             color:COLORS.black,
             paddingTop:10
         }}>
-            {data.name}
+            {data?.name}
         </Text>
         <Text style={{
             ...FONTS.h2,
             textTransform:'capitalize',
             color:COLORS.black,
         }}>
-            {data.desc}..
+            {data?.desc}..
         </Text>
         <View style={{
             display:'flex',
@@ -93,7 +114,7 @@ const Details = ({route , navigation}) => {
             ...FONTS.h1,
             color:COLORS.black,
         }}>
-             ₹{data.price}
+             ₹{data?.price}
         </Text>
         
             </View>
@@ -109,7 +130,7 @@ const Details = ({route , navigation}) => {
             color:COLORS.black,
             textDecorationLine:'line-through'
         }}>
-           ₹{data.ogPrice} 
+           ₹{data?.ogPrice} 
         </Text>
             </View>
            

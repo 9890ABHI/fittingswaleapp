@@ -3,6 +3,8 @@ import React from 'react';
 import {COLORS, FONTS} from '../assets/Theme';
 import {HomeData} from '../assets/Constants/data';
 import {Card} from '../componets/Card';
+import Slider from '../componets/Slider';
+import { HeadText } from '../componets/HeadText';
 
 
 const Home = ({ navigation }) => {
@@ -12,34 +14,63 @@ const Home = ({ navigation }) => {
         <View>
           <View>
             {/* <Header/> */}
-            <Text>Slider</Text>
+            {/* <Text>Slider</Text> */}
+            <Slider/>
             {/* <Text>Skadoosh</Text> */}
+<View style={{
+  width:'100%',
+  display:'flex',
+  // justifyContent:"flex-star"
+  alignItems:'flex-start',
+  paddingHorizontal:20,
+  paddingTop:20,
+  backgroundColor:COLORS.white
+}}>
 
+<View style={{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+    }}>
+      <Text
+      style={{
+        ...FONTS.h1,
+        color:COLORS.black
+      }}
+      >Latest Arrival<Text 
+      style={{
+        ...FONTS.h1,
+        color:COLORS.red
+      }}>
+        .</Text> </Text>
+    </View>
+            </View>
             <View
               style={{
                 paddingHorizontal: 10,
                 paddingVertical: 10,
+                backgroundColor:COLORS.white
               }}>
-              <Text
+              {/* <Text
                 style={{
                   ...FONTS.h1,
                   color: COLORS.black,
                 }}>
                 Latest Arrival
-              </Text>
+              </Text> */}
               <View
                 style={{
                   display: 'flex',
                   flexWrap: 'wrap',
                   flexDirection: 'row',
-                  paddingHorizontal: 20,
+                  paddingHorizontal: 0,
                   paddingVertical: 10,
                   gap: 20,
                   justifyContent: 'center',
                 }}>
-                {HomeData.map((item) => (
+                {HomeData.map((item , i) => (
                   <>
-                    <Card navigation={navigation} item={item}  />
+                    <Card navigation={navigation} item={item} key={i}  />
                   </>
                 ))}
               </View>

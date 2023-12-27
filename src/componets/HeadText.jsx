@@ -32,7 +32,7 @@ export const SettingHeadText = ({title})=> {
     }}>
       <Text
       style={{
-        ...FONTS.h2,
+        ...FONTS.h1,
         color:COLORS.gray
       }}
       >{title}<Text 

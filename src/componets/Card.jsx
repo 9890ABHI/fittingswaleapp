@@ -22,8 +22,8 @@ export const Card = ({item , navigation}) => {
         paddingHorizontal: 10,
         display: 'flex',
         justifyContent: 'space-between',
-        borderColor: COLORS.gray,
-        borderWidth: 2,
+        borderColor: COLORS.gray2,
+        borderWidth: 3,
       }} onPress={() => navigation.navigate("Details", {id:item.id , item:item})}>
     <View
                       >
@@ -37,7 +37,7 @@ export const Card = ({item , navigation}) => {
                           borderRadius: 7,
                         }}
                       />
-                      <View>
+                      <View style={{width:'100%'}}>
                         <Text
                           style={{
                             ...FONTS.h3,
@@ -88,7 +88,7 @@ export const Card = ({item , navigation}) => {
                             paddingLeft:10
                         }}>
 
-                          {discount} % off
+                          {discount}%off
                           </Text>
                               </View>
                       </View>
@@ -226,30 +226,31 @@ return(
     //  borderTopLeftRadius:10,
      overflow:'hidden',
     }}>
-      <View style={{width:'10%'}}>
+      <View style={{width:'15%'}}>
         <View style={{
 width:'100%',
 height:'100%',
 backgroundColor:COLORS.Primary,
 display:'flex',
-// justifyContent:'center',
+justifyContent:'flex-start',
+paddingTop:20,
 alignItems:'center',
 // paddingTop:10
         }}>
 
         <Text style={{
           transform:[{rotate: '90deg'}],
-          ...FONTS.h3,
+          ...FONTS.h2,
           color:COLORS.white,
-          // display:'flex',
           letterSpacing:2,
-          paddingLeft:5
+          width:'90%'
         }}>•••</Text>
         </View>
       </View>
       <View style={{
         display:'flex',
         paddingLeft:20
+        ,paddingVertical:10
       }}>
 
       <Text style={{
@@ -284,6 +285,12 @@ alignItems:'center',
         </View>
         
         </View>
+        <Text style={{
+        ...FONTS.body3,
+        color:COLORS.black
+      }}>
+      {item.address.pincode}.
+      </Text>
         
       </View>
 

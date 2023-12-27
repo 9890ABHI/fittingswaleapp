@@ -1,11 +1,25 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
+import { SettingHeadText } from '../../componets/HeadText'
 
 const Rating = () => {
   return (
-    <View>
-      <Text>Rating</Text>
+    <>
+    <ScrollView>
+        <View
+          style={{
+            paddingHorizontal: 20,
+          }}>
+          
+            <SettingHeadText title={'Rating'} />
+            
+              <View>
+
+
+              </View>
     </View>
+    </ScrollView>
+    </>
   )
 }
 

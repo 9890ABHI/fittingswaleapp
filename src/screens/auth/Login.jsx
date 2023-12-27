@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
     console.log(credentials);
     console.log('====================================');
     dispatch(loginAction(credentials));
-    // navigation.navigate('HomeScreen')
+    navigation.navigate('HomeScreen')
   };
   console.log('====================================');
   console.log(loading);

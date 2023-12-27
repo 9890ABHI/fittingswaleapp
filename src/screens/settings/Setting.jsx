@@ -1,11 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { SettingHeadText } from '../../componets/HeadText'
 
 export const Setting = () => {
   return (
-    <View>
-      <Text>Setting</Text>
+    <>
+    <ScrollView>
+        <View
+          style={{
+            paddingHorizontal: 20,
+          }}>
+          
+            <SettingHeadText title={'Setting'} />
+            
+              <View>
+
+
+              </View>
     </View>
+    </ScrollView>
+    </>
   )
 }
 
