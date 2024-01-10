@@ -42,6 +42,7 @@ if (nativeEvent){
             <Image
             source={item}
             resizeMode='stretch'
+            key={i}
             style={{
                 
                 width:WIDTH,

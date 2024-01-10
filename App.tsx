@@ -26,6 +26,7 @@ import Login from './src/screens/auth/Login';
 import {Provider} from 'react-redux';
 import {Store} from './src/Store';
 import {COLORS, FONTS} from './src/assets/Theme';
+import OTP from './src/screens/auth/OTP';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -108,9 +109,10 @@ function App() {
           <NavigationContainer>
             <Stack.Navigator
               screenOptions={{headerShown: false}}
-              initialRouteName="HomeScreen">
+              initialRouteName="OTP">
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="SignUp" component={SignUp} />
+              <Stack.Screen name="OTP" component={OTP} />
               <Stack.Screen name="HomeScreen" component={HomeScreen} />
               <Stack.Screen name="Details" component={Details} />
               <Stack.Screen

@@ -39,6 +39,8 @@ const SignUp = ({ navigation }) => {
     };
 
     dispatch(RegisterAction(setLoading, userData));
+    navigation.navigate("OTP")
+
   };
   console.log('====================================');
   console.log(loading);

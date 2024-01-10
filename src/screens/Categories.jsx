@@ -3,6 +3,7 @@ import React from 'react'
 import { COLORS, FONTS } from '../assets/Theme'
 import { Data } from '../assets/Constants/data'
 import { Images } from '../assets/Image'
+import { HeadText } from '../componets/HeadText'
 
 const Categories = ({navigation}) => {
   return (
@@ -12,18 +13,25 @@ const Categories = ({navigation}) => {
    
     <View>
 
-    <View>
-      <Text style={{
+    <View style={{
+      display:'flex',
+      alignItems:'flex-start',
+      paddingHorizontal:20
+    }}>
+      {/* <Text style={{
         ...FONTS.h3,
         color:COLORS.black
-      }}>Shop By Categories</Text>
+      }}>Shop By Categories</Text> */}
+      <HeadText 
+      title={"Shop By Categories"}
+      />
     </View>
 <View style={{
   display:'flex',
   flexWrap:'wrap',
   flexDirection:'row',
   justifyContent:'center',
-  gap:10
+  gap:20
 }}>
 
    {
@@ -35,24 +43,32 @@ const Categories = ({navigation}) => {
       >
       <View style={{
         width:150, 
-        height:150,
+        // height:150,
         display:'flex',
         flexDirection:'column',
         justifyContent:'center',
         alignItems:'center'
       }}>
         <Image 
-        source={item?.img}
-        // source={{uri : item?.img}}
-        height={100}
+        // source={item?.img}
+        source={Images.pic1}
+        // height={100}
+        // width={100}
+        resizeMode='cover'
         style={{
-          // borderRadius:100
+          width:100,
+          height:100,
+          borderRadius:200,
+          borderWidth:2,
+          borderColor:COLORS.gray3
         }}
         />
 
-      <Text>
-        {/* {item.id}{' '} */}
-        {/* // {' '} */}
+      <Text style={{
+        ...FONTS.h3,
+        textAlign:'center',
+        color:COLORS.black
+      }}>
         {item.name}
       </Text>
       </View>

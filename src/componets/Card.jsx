@@ -8,14 +8,14 @@ import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../Store/actions';
 
 
-export const Card = ({item , navigation}) => {
+export const Card = ({Category ,item , navigation }) => {
     const discount = Math.round(
         ((item.ogPrice - item.price) / item.ogPrice) * 100
       );
   return (
     <TouchableOpacity style={{
         width: '45%',
-        height: 250,
+        height: Category ? "auto" : 250,
         backgroundColor: '#fff',
         borderRadius: 10,
         paddingVertical: 10,
@@ -24,7 +24,8 @@ export const Card = ({item , navigation}) => {
         justifyContent: 'space-between',
         borderColor: COLORS.gray3,
         borderWidth: 3,
-      }} onPress={() => navigation.navigate("Details", {id:item.id , item:item})}>
+      }} 
+      onPress={() => navigation.navigate("Details", {id:item?.id , item:item})}>
     <View
                       >
                       <Image
@@ -38,7 +39,19 @@ export const Card = ({item , navigation}) => {
                         }}
                       />
                       <View style={{width:'100%'}}>
-                        <Text
+                        {
+                          Category ? <>
+                          <Text
+                          style={{
+                            ...FONTS.body3,
+                            textTransform: 'capitalize',
+                            color: COLORS.black,
+                          }}>
+                          {item.name}
+                        </Text>
+                          </>:
+                          <>
+                          <Text
                           style={{
                             ...FONTS.h3,
                             textTransform: 'capitalize',
@@ -46,6 +59,9 @@ export const Card = ({item , navigation}) => {
                           }}>
                           {item.name}
                         </Text>
+                          </>
+                        }
+                        
                         <Text
                           style={{
                             ...FONTS.h3,
